@@ -1,12 +1,20 @@
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int stationAmount = 10;
+
+    public Radio(int stationAmount) {
+        this.stationAmount = stationAmount;
+    }
+
+    public Radio() {
+    }
 
     public int getCurrentStation() {
         return currentStation;
     }
     public void setCurrentStation(int newStation) {
-        if (newStation <= 9) {
+        if (newStation < stationAmount) {
             if (newStation >= 0) {
                 currentStation = newStation;
             }
@@ -14,7 +22,7 @@ public class Radio {
     }
 
     public void next () {
-        if (currentStation == 9) {
+        if (currentStation == stationAmount - 1) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -23,7 +31,7 @@ public class Radio {
 
     public void prev () {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = stationAmount - 1;
         } else {
             currentStation--;
         }
